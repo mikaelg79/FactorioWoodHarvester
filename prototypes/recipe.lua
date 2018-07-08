@@ -2,21 +2,26 @@
 
 data:extend(
     {
-        {
-            type = "recipe-category",
-            name = "wood-harvesting"
-        },
+        -- Harvesting machine
         {
             type = "recipe",
             name = "wood-harvester",
             enabled = false,
             energy_required = 10,
             ingredients = {
-                {"copper-plate",200},
-                {"iron-plate",50}
+                {"iron-axe",5},
+                {"iron-gear-wheel",5},
+                {"iron-plate",10}
             },
-            result = "wood-harvester"
+            result = "wood-harvester",
+            order = "a[items]-c[electric-mining-drill]-a[wood-harvester]"
         },
+        -- Recipe category
+        {
+            type = "recipe-category",
+            name = "wood-harvesting"
+        },
+        -- Hidden recipe for the fixed recipe
         {
             type = "recipe",
             name = "wood-harvesting",
