@@ -16,15 +16,15 @@ script.on_event(
     function(event) onBuilt(event.created_entity) end
 )
 
-function registerTickHandler()
+function whSetup()
     if global.woodHarvesters then
         script.on_nth_tick(harvest_speed,doHarvest)
     end
 end
 
-script.on_load(registerTickHandler)
-script.on_init(registerTickHandler)
-script.on_configuration_changed(registerTickHandler)
+script.on_load(whSetup)
+script.on_init(whSetup)
+script.on_configuration_changed(whSetup)
 
 function unRegisterTickHandler()
     script.on_nth_tick(harvest_speed,nil)
