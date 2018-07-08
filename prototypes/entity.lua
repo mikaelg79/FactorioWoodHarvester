@@ -14,7 +14,7 @@ data:extend(
 
             picture =
             {
-                filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
+                filename = "__WoodHarvester__/graphics/entity/wood-harvester/wood-harvester.png",
                 priority = "high",
                 height = 114,
                 width = 114,
@@ -23,18 +23,19 @@ data:extend(
                     0.0625
                 },
             },
-            type = "container",
-            inventory_size = 1,
-            enable_inventory_bar = false,
+            type = "assembling-machine",
+            fixed_recipe = "wood-harvesting",
+            -- inventory_size = 1,
+            -- enable_inventory_bar = false,
             alert_icon_shift = {-0.09375,-0.375},
             animation = {
                 layers = {
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
+                        filename = "__WoodHarvester__/graphics/entity/wood-harvester/wood-harvester.png",
                         frame_count = 32,
                         height = 114,
                         hr_version = {
-                            filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1.png",
+                            filename = "__WoodHarvester__/graphics/entity/wood-harvester/hr-wood-harvester.png",
                             frame_count = 32,
                             height = 226,
                             line_length = 8,
@@ -92,8 +93,8 @@ data:extend(
             collision_box = {{-1.2,-1.2},{1.2,1.2}},
             selection_box = {{-1.5,-1.5},{1.5,1.5}},
             corpse = "big-remnants",
-            -- crafting_categories = {"wood-harvesting"},
-            -- crafting_speed = 1,
+            crafting_categories = {"wood-harvesting"},
+            crafting_speed = 1,
             dying_explosion = "medium-explosion",
             energy_source = {
                 emissions = 0.03333333333333333,
@@ -104,7 +105,7 @@ data:extend(
             flags = {"placeable-neutral","placeable-player","player-creation"},
             icon = "__base__/graphics/icons/assembling-machine-1.png",
             icon_size = 32,
-            -- ingredient_count = 2,
+            ingredient_count = 2,
             max_health = 300,
             open_sound = {
                 filename = "__base__/sound/machine-open.ogg",
@@ -120,23 +121,23 @@ data:extend(
                 filename = "__base__/sound/car-metal-impact.ogg",
                 volume = 0.65
             },
-            -- working_sound = {
-            --     apparent_volume = 1.5,
-            --     idle_sound = {
-            --         filename = "__base__/sound/idle1.ogg",
-            --         volume = 0.6
-            --     },
-            --     sound = {
-            --         {
-            --             filename = "__base__/sound/assembling-machine-t1-1.ogg",
-            --             volume = 0.8
-            --         },
-            --         {
-            --             filename = "__base__/sound/assembling-machine-t1-2.ogg",
-            --             volume = 0.8
-            --         }
-            --     }
-            -- },
+            working_sound = {
+                apparent_volume = 1.5,
+                idle_sound = {
+                    filename = "__base__/sound/idle1.ogg",
+                    volume = 0.6
+                },
+                sound = {
+                    {
+                        filename = "__base__/sound/assembling-machine-t1-1.ogg",
+                        volume = 0.8
+                    },
+                    {
+                        filename = "__base__/sound/assembling-machine-t1-2.ogg",
+                        volume = 0.8
+                    }
+                }
+            },
         }
     }
 )

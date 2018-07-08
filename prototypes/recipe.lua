@@ -22,14 +22,20 @@ data:extend(
             name = "wood-harvesting",
             enabled = true,
             hidden = true,
-            energy_required = 5,
+            energy_required = 1,
             category = "wood-harvesting",
-            ingredients = {},
+            ingredients = {
+                {
+                    type = "item",
+                    name = "timber",
+                    amount = "1"
+                }
+            },
             results = {
                 {
                     type = "item",
                     name = "raw-wood",
-                    amount = "2"
+                    amount = "1"
                 }
             }
         }

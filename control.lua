@@ -1,7 +1,12 @@
 --control.lua
 
-local harvest_speed = 5*60 -- in ticks (60 tick/s)
-local harvest_range = 10 -- radius of harvesting area, in tiles
+require("util")
+
+debug_on = 0
+
+local harvest_speed = 60 -- in ticks (60 tick/s)
+local harvest_range = 24 -- radius of harvesting area, in tiles
+local harvest_stack = 5 -- amount of timber to harvest before waiting for processing
 
 script.on_event(
     {
@@ -26,55 +31,56 @@ function unRegisterTickHandler()
 end
 
 function onBuilt(entity)
+    debug_print("In onBuilt")
     if entity.name == "wood-harvester" then
         if not global.woodHarvesters then global.woodHarvesters = {} end
         global.woodHarvesters[#global.woodHarvesters+1] = entity
-        game.print("Harvesters: " .. #global.woodHarvesters)
+        debug_print("Harvesters: " .. #global.woodHarvesters)
         -- start animation
         registerTickHandler()
     end
 end
 
 function doHarvest()
-    game.print(#global.woodHarvesters .. " active harvesters")
+    debug_print("In doHarvest")
+    debug_print(#global.woodHarvesters .. " active harvesters")
     for i,harvester in pairs(global.woodHarvesters) do
         if not harvester.valid then
-            game.print "Removed invalid harvester"
+            debug_print("Removed invalid harvester")
             table.remove(global.woodHarvesters, i)
         else
-            local searchArea = {
-                {harvester.position.x-harvest_range,harvester.position.y-harvest_range},
-                {harvester.position.x+harvest_range,harvester.position.y+harvest_range}
-            }
-            local tree = harvester.surface.find_entities_filtered{type="tree",limit=1,area=searchArea}[1]
-            if not tree then
-                game.print "Harvester has run out of trees"
-                -- stop animation
-                table.remove(global.woodHarvesters,i)
-            else
-                local treeProducts = tree.prototype.mineable_properties.products
-                local harvested_amount = 0
-                for _,product in pairs(treeProducts) do
-                    if harvester.can_insert(product) then
-                        game.print("Harvested " .. product.amount .. " units of " .. product.name)
-                        harvester.insert{name=product.name,count=product.amount}
-                        tree.die()
-                        -- start animation
-                    else
-                        game.print "Harvester is full"
-                        -- stop animation
+            if (harvester.get_inventory(defines.inventory.assembling_machine_input).get_item_count() <= 4) and (harvester.energy > 0) then
+                local searchArea = {
+                    {harvester.position.x-harvest_range,harvester.position.y-harvest_range},
+                    {harvester.position.x+harvest_range,harvester.position.y+harvest_range}
+                }
+                local tree = harvester.surface.find_entities_filtered{type="tree",limit=1,area=searchArea}[1]
+                if not tree then
+                    debug_print("No more trees to harvest.")
+                    table.remove(global.woodHarvesters,i)
+                else
+                    local treeProducts = tree.prototype.mineable_properties.products
+                    for _,product in pairs(treeProducts) do
+                        if product.name == "raw-wood" then
+                            if harvester.can_insert({name="timber",count=product.amount}) then
+                                debug_print("Harvested " .. product.amount .. " units of timber")
+                                harvester.insert{name="timber",count=product.amount}
+                                tree.die()
+                            else
+                                debug_print("Can't insert timber - invalid inputs in machine?")
+                            end
+                        end
                     end
                 end
+            else
+                debug_print("Harvester full or no power")
             end
         end
     end
     if #global.woodHarvesters == 0 then
-        game.print "No valid harvesters left"
+        debug_print("No valid harvesters left")
         global.woodHarvesters = nil
         unRegisterTickHandler()
     end
 end
-
-
-
 
