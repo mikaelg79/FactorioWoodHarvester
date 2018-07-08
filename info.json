@@ -1,0 +1,11 @@
+{
+    "name": "WoodHarvester",
+    "version": "0.0.1",
+    "title": "Wood Harvester",
+    "author": "mikaelg",
+    "contact": "",
+    "homepage": "",
+    "factorio_version": "0.16",
+    "dependencies": ["base >= 0.16"],
+    "description": "Adds an early-game building that automatically harvests wood around itself."
+}
