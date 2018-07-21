@@ -14,7 +14,7 @@ data:extend(
                 {"iron-plate",10}
             },
             result = "wood-harvester",
-            order = "a[items]-c[electric-mining-drill]-a[wood-harvester]"
+            order = "b[fluids]-b[pumpjack]-c[wood-harvester]"
         },
         -- Recipe category
         {

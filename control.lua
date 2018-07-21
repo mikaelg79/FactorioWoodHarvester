@@ -2,7 +2,7 @@
 
 require("whutil")
 
-debug_on = 1
+debug_on = 0
 
 local harvest_speed = 60 -- in ticks (60 tick/s)
 local harvest_min_range = 2 -- starting radius of harvesting area, in tiles

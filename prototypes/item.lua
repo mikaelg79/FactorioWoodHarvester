@@ -9,10 +9,10 @@ data:extend(
             icon = "__WoodHarvester__/graphics/icons/wood-harvester.png",
             icon_size = 32,
             name = "wood-harvester",
-            order = "a[items]-c[electric-mining-drill]-a[wood-harvester]",
+            order = "b[fluids]-b[pumpjack]-c[wood-harvester]",
             place_result = "wood-harvester",
             stack_size = 50,
-            subgroup = "production-machine",
+            subgroup = "extraction-machine",
             type = "item"
         },
         {

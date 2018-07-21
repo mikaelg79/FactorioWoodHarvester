@@ -4,7 +4,7 @@
     "title": "Wood Harvester",
     "author": "mg79",
     "contact": "",
-    "homepage": "",
+    "homepage": "https://forums.factorio.com/viewtopic.php?f=190&t=61448",
     "factorio_version": "0.16",
     "dependencies": ["base >= 0.16"],
     "description": "Adds an early-game building that automatically harvests wood around itself."
