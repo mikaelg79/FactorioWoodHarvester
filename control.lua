@@ -26,17 +26,25 @@ end
 function checkForUpdate(event)
     if (event.mod_changes["WoodHarvester"]) then
         local mod = event.mod_changes["WoodHarvester"]
-        local old_version = splitversion(mod.old_version)
-        -- New global.woodHarvesters structure
-        if (old_version.major < 1) and (old_version.minor < 1) and (old_version.build < 8) then
-            game.print("Updating global structure...")
-            tempHarvesters = {}
-            for i,harvester in pairs(global.woodHarvesters) do
-                tempHarvesters[i] = {["machine"]=harvester,["range"]=2}
+        if not mod.old_version then
+            -- Mod was added, do nothing
+        elseif not mod.new_version then
+            -- Mod was removed.
+            if (global.woodHarvesters) then global.woodHarvesters = nil end
+        else
+            local old_version = splitversion(mod.old_version)
+            -- New global.woodHarvesters structure
+            if (old_version.major < 1) and (old_version.minor < 1) and (old_version.build < 8) then
+                if (global.woodHarvesters) then
+                    local tempHarvesters = {}
+                    for i,harvester in pairs(global.woodHarvesters) do
+                        tempHarvesters[i] = {["machine"]=harvester,["range"]=2}
+                    end
+                    global.woodHarvesters = tempHarvesters
+                end
             end
-            global.woodHarvesters = tempHarvesters
+            -- Future changes below
         end
-
     end
     registerTickHandler()
 end
