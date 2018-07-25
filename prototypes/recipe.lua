@@ -33,14 +33,14 @@ data:extend(
                 {
                     type = "item",
                     name = "timber",
-                    amount = "1"
+                    amount = 1
                 }
             },
             results = {
                 {
                     type = "item",
                     name = "raw-wood",
-                    amount = "1"
+                    amount = 1
                 }
             }
         }
