@@ -8,6 +8,7 @@ Official forums thread:
 https://forums.factorio.com/61448
 
 Changelog:
+0.0.11: Fixed a crash when a tree in rare occasions would provide raw wood with a nil amount.
 0.0.10: Fixed recipe items amounts incorrectly defined as strings instead of ints.
 0.0.9:  Fixed an error message when the mod was added to an existing game.
 0.0.8:  Fixed the recipe sorting, now sorts after Pumpjacks in the extraction machine subcategory.

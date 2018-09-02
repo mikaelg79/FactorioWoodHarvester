@@ -96,7 +96,7 @@ function doHarvest()
                     local got_product = nil
                     local treeProducts = tree.prototype.mineable_properties.products
                     for _,product in pairs(treeProducts) do
-                        if product.name == "raw-wood" then
+                        if (product.name == "raw-wood" and product.amount) then
                             got_product = true
                             if harvester.machine.can_insert({name="timber",count=product.amount}) then
                                 debug_print("Harvested " .. product.amount .. " units of timber")
