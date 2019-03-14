@@ -9,7 +9,6 @@ data:extend(
             enabled = false,
             energy_required = 10,
             ingredients = {
-                {"iron-axe",5},
                 {"iron-gear-wheel",5},
                 {"iron-plate",10}
             },
@@ -39,7 +38,7 @@ data:extend(
             results = {
                 {
                     type = "item",
-                    name = "raw-wood",
+                    name = "wood",
                     amount = 1
                 }
             }

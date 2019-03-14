@@ -138,6 +138,11 @@ data:extend(
                     }
                 }
             },
+            radius_visualisation_picture = {
+                filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-radius-visualization.png",
+                height = 24,
+                width = 24
+            },
         }
     }
 )
