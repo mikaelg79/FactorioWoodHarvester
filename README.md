@@ -1,10 +1,16 @@
 # FactorioWoodHarvester
 
-A mod for Factorio to auto harvest trees from the world
+A mod for Factorio to auto harvest trees from the world. Intended as an early-game help for clearing out forests and automating early wood gathering, not intended as a self-sustaining wood factory.
+
+If you're looking for regrowing or plantable trees, check out the "tree-growth" or "treefarm" mods
+
 
 Big thanks to eradicator on the Factorio forums for helping a newbie out.
 
 Official forums thread: https://forums.factorio.com/61448
+
+
+
 
 --- Version 0.17.1 ---
 
